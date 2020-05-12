@@ -1,0 +1,41 @@
+From 2c5c1d9490d0f84a639c343742ee234cd0a4c372 Mon Sep 17 00:00:00 2001
+From: Igor Opaniuk <igor.opaniuk@gmail.com>
+Date: Tue, 12 May 2020 12:10:49 +0300
+Subject: [PATCH] makefile: add -D_FORTIFY_SOURCE=2
+
+This fixes the warning:
+_FORTIFY_SOURCE requires compiling with optimization (-O)
+
+Signed-off-by: Igor Opaniuk <igor.opaniuk@gmail.com>
+---
+ libteec/Makefile        | 2 +-
+ tee-supplicant/Makefile | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libteec/Makefile b/libteec/Makefile
+index e5cbfa3..a5d24b4 100644
+--- a/libteec/Makefile
++++ b/libteec/Makefile
+@@ -30,7 +30,7 @@ TEEC_INCLUDES 	:= \
+ 
+ TEEC_CFLAGS	:= $(addprefix -I, $(TEEC_INCLUDES)) $(CFLAGS) -D_GNU_SOURCE \
+ 		   -DDEBUGLEVEL_$(CFG_TEE_CLIENT_LOG_LEVEL) \
+-		   -DBINARY_PREFIX=\"TEEC\"
++		   -DBINARY_PREFIX=\"TEEC\" -D_FORTIFY_SOURCE=2 -O3
+ 
+ ifeq ($(CFG_TEE_BENCHMARK),y)
+ TEEC_CFLAGS	+= -DCFG_TEE_BENCHMARK
+diff --git a/tee-supplicant/Makefile b/tee-supplicant/Makefile
+index 4b423fb..3a67411 100644
+--- a/tee-supplicant/Makefile
++++ b/tee-supplicant/Makefile
+@@ -43,7 +43,8 @@ TEES_CFLAGS	:= $(addprefix -I, $(TEES_INCLUDES)) $(CFLAGS) \
+ 		   -DDEBUGLEVEL_$(CFG_TEE_SUPP_LOG_LEVEL) \
+ 		   -DBINARY_PREFIX=\"TEES\" \
+ 		   -DTEE_FS_PARENT_PATH=\"$(CFG_TEE_FS_PARENT_PATH)\" \
+-		   -DTEEC_LOAD_PATH=\"$(CFG_TEE_CLIENT_LOAD_PATH)\"
++		   -DTEEC_LOAD_PATH=\"$(CFG_TEE_CLIENT_LOAD_PATH)\" \
++		   -D_FORTIFY_SOURCE=2 -O3
+ 
+ ifeq ($(CFG_GP_SOCKETS),y)
+ TEES_CFLAGS	+= -DCFG_GP_SOCKETS=1
