@@ -69,20 +69,10 @@ OPTEE_BIN_EXT_mx8mm = "8mm"
 # Extra Stuff for TechNexion
 #
 MACHINE_FIRMWARE_remove_mx8 = "linux-firmware-ath10k"
-MACHINE_FEATURES_append = " pci wifi bluetooth touchscreen"
+MACHINE_FEATURES_append = " pci wifi bluetooth "
 MACHINE_FEATURES_remove_mx8 = "touchscreen"
 MACHINE_EXTRA_RRECOMMENDS_append = " broadcom-bluetooth"
 MACHINE_EXTRA_RRECOMMENDS_remove_mx8 = "broadcom-bluetooth"
-IMAGE_INSTALL_append = " packagegroup-tn-tools packagegroup-tn-wlan"
-IMAGE_INSTALL_append_voicehat = " packagegroup-tn-voicehat"
-IMAGE_INSTALL_append_nfc = " packagegroup-tn-nfc"
-IMAGE_FSTYPES_append = " ext4 sdcard.xz"
-IMAGE_CLASSES_append = " image_types_tn"
-IMAGE_CLASSES_remove_mx8 = "image_types_tn"
-SDCARD_GENERATION_COMMAND_mx6dl = "generate_tn_sdcard"
-SDCARD_GENERATION_COMMAND_mx6q = "generate_tn_sdcard"
-SDCARD_GENERATION_COMMAND_mx7d = "generate_tn_sdcard"
-SDCARD_GENERATION_COMMAND_mx8m = "generate_imx_sdcard"
 LICENSE_FLAGS_WHITELIST += "commercial_qca commercial_brcm"
 
 # wic (sdcard) image
@@ -98,4 +88,3 @@ XZ_INTEGRITY_CHECK = "crc64"
 
 # Additional BitBake/Yocto build tool
 HOSTTOOLS_NONFATAL += "git-lfs"
-
