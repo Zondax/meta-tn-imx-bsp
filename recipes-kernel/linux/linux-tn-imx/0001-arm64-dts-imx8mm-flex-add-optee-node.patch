@@ -1,0 +1,30 @@
+From 7a3e97df911f7c011abceb31933b123a9c97e4eb Mon Sep 17 00:00:00 2001
+From: Igor Opaniuk <igor.opaniuk@gmail.com>
+Date: Tue, 21 Jul 2020 17:19:25 +0300
+Subject: [PATCH] arm64: dts: imx8mm-flex: add optee node
+
+Add optee firmware node so OP-TEE device is enumerated.
+
+Signed-off-by: Igor Opaniuk <igor.opaniuk@gmail.com>
+---
+ arch/arm64/boot/dts/freescale/imx8mm-flex.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/freescale/imx8mm-flex.dtsi b/arch/arm64/boot/dts/freescale/imx8mm-flex.dtsi
+index 30d91c8a5b2e..84cd44567e6b 100755
+--- a/arch/arm64/boot/dts/freescale/imx8mm-flex.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mm-flex.dtsi
+@@ -26,6 +26,13 @@
+ 		stdout-path = &uart2;
+ 	};
+ 
++	firmware {
++		optee {
++			compatible = "linaro,optee-tz";
++			method = "smc";
++		};
++	};
++
+ 	bt_reg_on: btreg_on {
+ 		compatible = "gpio-reset";
+ 		pinctrl-names = "default";

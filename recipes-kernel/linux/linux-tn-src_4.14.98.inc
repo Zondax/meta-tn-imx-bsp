@@ -9,7 +9,9 @@ PR = "r1"
 SRCBRANCH = "tn-imx_4.14.98_2.0.0_ga-stable"
 LOCALVERSION = "-${SRCREV}"
 KERNEL_SRC = "git://github.com/TechNexion/linux-tn-imx.git"
-SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
+SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH} \
+           file://0001-arm64-dts-imx8mm-flex-add-optee-node.patch \
+           "
 SRCREV = "9146d4dcb2dda0c7614f74f824cfb20d29bd85f8"
 
 S = "${WORKDIR}/git"
