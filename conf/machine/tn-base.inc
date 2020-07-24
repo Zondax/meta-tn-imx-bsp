@@ -69,7 +69,7 @@ OPTEE_BIN_EXT_mx8mm = "8mm"
 # Extra Stuff for TechNexion
 #
 MACHINE_FIRMWARE_remove_mx8 = "linux-firmware-ath10k"
-MACHINE_FEATURES_append = " pci wifi bluetooth "
+MACHINE_FEATURES_append = " pci wifi bluetooth optee "
 MACHINE_FEATURES_remove_mx8 = "touchscreen"
 MACHINE_EXTRA_RRECOMMENDS_append = " broadcom-bluetooth"
 MACHINE_EXTRA_RRECOMMENDS_remove_mx8 = "broadcom-bluetooth"
